@@ -60,13 +60,13 @@ const Preloader = () => {
                 <span className="inline-block translate-y-full">H</span>
                 <span className="inline-block translate-y-full">I</span>
                 <span className="inline-block translate-y-full">T</span>
-                <span className="inline-block translate-y-full">C</span>
+                {/* <span className="inline-block translate-y-full">C</span>
                 <span className="inline-block translate-y-full">H</span>
                 <span className="inline-block translate-y-full">A</span>
                 <span className="inline-block translate-y-full">D</span>
                 <span className="inline-block translate-y-full">G</span>
                 <span className="inline-block translate-y-full">A</span>
-                <span className="inline-block translate-y-full">L</span>
+                <span className="inline-block translate-y-full">L</span> */}
             </p>
         </div>
     );
