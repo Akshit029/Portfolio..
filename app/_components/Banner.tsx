@@ -10,84 +10,127 @@ import React from 'react';
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const Banner = () => {
-    const containerRef = React.useRef<HTMLDivElement>(null);
+    const wrapperRef = React.useRef<HTMLDivElement>(null);
 
-    // move the content a little up on scroll
     useGSAP(
         () => {
             const tl = gsap.timeline({
                 scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: 'bottom 70%',
-                    end: 'bottom 10%',
-                    scrub: 1,
+                    trigger: wrapperRef.current,
+                    start: 'top top',
+                    end: 'bottom 20%',
+                    scrub: 1.5,
                 },
             });
 
-            tl.fromTo(
-                '.slide-up-and-fade',
-                { y: 0 },
-                { y: -150, opacity: 0, stagger: 0.02 },
+            tl.to('.animate-text', {
+                y: -80,
+                opacity: 0,
+                stagger: 0.03,
+                ease: 'power1.out',
+            });
+
+            tl.to(
+                '.animate-badge',
+                {
+                    scale: 0.8,
+                    opacity: 0,
+                    ease: 'power2.in',
+                },
+                '<',
             );
         },
-        { scope: containerRef },
+        { scope: wrapperRef },
     );
 
     return (
-        <section className="relative overflow-hidden" id="banner">
+        <section
+            className="relative overflow-hidden"
+            id="banner"
+            ref={wrapperRef}
+        >
             <ArrowAnimation />
-            <div
-                className="container h-[100svh] min-h-[530px] max-md:pb-10 flex justify-between items-center max-md:flex-col"
-                ref={containerRef}
-            >
-                <div className="max-md:grow max-md:flex flex-col justify-center items-start max-w-[544px]">
-                    <h1 className="banner-title slide-up-and-fade leading-[.95] text-6xl sm:text-[80px] font-anton">
-                        <span className="text-primary">FRONTEND</span>
-                        <br /> <span className="ml-4">DEVELOPER</span>
-                    </h1>
-                    <p className="banner-description slide-up-and-fade mt-6 text-lg text-muted-foreground">
-                        Hi! I&apos;m{' '}
-                        <span className="font-medium text-foreground">
-                            Tajmirul
-                        </span>
-                        . A creative Frontend Developer with 3+ years of
-                        experience in building high-performance, scalable, and
-                        responsive web solutions.
-                    </p>
-                    <Button
-                        as="link"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href={GENERAL_INFO.upworkProfile}
-                        variant="primary"
-                        className="mt-9 banner-button slide-up-and-fade"
-                    >
-                        Hire Me
-                    </Button>
-                </div>
 
-                <div className="md:absolute bottom-[10%] right-[4%] flex md:flex-col gap-4 md:gap-8 text-center md:text-right">
-                    <div className="slide-up-and-fade">
-                        <h5 className="text-3xl sm:text-4xl font-anton text-primary mb-1.5">
-                            3+
-                        </h5>
-                        <p className="text-muted-foreground">
-                            Years of Experience
-                        </p>
-                    </div>
-                    <div className="slide-up-and-fade">
-                        <h5 className="text-3xl sm:text-4xl font-anton text-primary mb-1.5">
-                            7+
-                        </h5>
-                        <p className="text-muted-foreground">
-                            Completed Projects
-                        </p>
-                    </div>
-                    <div className="slide-up-and-fade">
-                        <h5 className="text-3xl sm:text-4xl font-anton text-primary mb-1.5">
-                            10K+
-                        </h5>
-                        <p className="text-muted-foreground">Hours Worked</p>
+            <div className="container min-h-[100svh] flex items-center justify-center py-20">
+                <div className="w-full max-w-5xl">
+                    <div className="grid lg:grid-cols-[1fr_auto] gap-12 lg:gap-20 items-center">
+                        {/* Main Content */}
+                        <div className="space-y-6 lg:space-y-8">
+                            <div className="inline-block animate-badge">
+                                <div className="px-4 py-2 rounded-full border border-primary/20 bg-primary/5">
+                                    <span className="text-sm font-medium text-primary">
+                                        Available for work
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h1 className="font-anton space-y-2">
+                                    <span className="animate-text block text-4xl sm:text-6xl lg:text-7xl">
+                                        FULL STACK
+                                    </span>
+                                    <span className="animate-text block text-5xl sm:text-7xl lg:text-8xl text-primary">
+                                        DEVELOPER
+                                    </span>
+                                </h1>
+                            </div>
+
+                            <p className="animate-text text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">
+                                I&apos;m{' '}
+                                <span className="font-bold text-foreground">
+                                    Akshit Chadgal
+                                </span>
+                                , a Computer Science student with a strong focus
+                                on the MERN stack. I'm passionate about building
+                                modern, scalable web applications and love
+                                turning ideas into smooth, user-friendly digital
+                                experiences through hands-on projects and
+                                continuous learning.Through personal projects
+                                and freelance work, I've gained real-world
+                                experience in building full-stack applications.
+                            </p>
+
+                            {/* <Button
+                as="link"
+                target="_blank"
+                rel="noopener noreferrer"
+                href={GENERAL_INFO.upworkProfile}
+                variant="primary"
+                className="animate-text"
+              >
+                View My Work
+              </Button> */}
+                        </div>
+
+                        {/* Stats Sidebar */}
+                        {/* <div className="lg:border-l lg:border-border lg:pl-12 space-y-8">
+              <div className="animate-text">
+                <div className="text-5xl lg:text-6xl font-anton text-primary leading-none mb-3">
+                  3+
+                </div>
+                <p className="text-sm uppercase tracking-wider text-muted-foreground">
+                  Years Building
+                </p>
+              </div>
+
+              <div className="animate-text">
+                <div className="text-5xl lg:text-6xl font-anton text-primary leading-none mb-3">
+                  7+
+                </div>
+                <p className="text-sm uppercase tracking-wider text-muted-foreground">
+                  Projects Launched
+                </p>
+              </div>
+
+              <div className="animate-text">
+                <div className="text-5xl lg:text-6xl font-anton text-primary leading-none mb-3">
+                  10K+
+                </div>
+                <p className="text-sm uppercase tracking-wider text-muted-foreground">
+                  Hours Invested
+                </p>
+              </div>
+            </div> */}
                     </div>
                 </div>
             </div>

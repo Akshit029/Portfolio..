@@ -7,84 +7,102 @@ import React from 'react';
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const AboutMe = () => {
-    const container = React.useRef<HTMLDivElement>(null);
+    const sectionRef = React.useRef<HTMLDivElement>(null);
 
     useGSAP(
         () => {
-            const tl = gsap.timeline({
+            const enterTimeline = gsap.timeline({
                 scrollTrigger: {
-                    id: 'about-me-in',
-                    trigger: container.current,
-                    start: 'top 70%',
-                    end: 'bottom bottom',
-                    scrub: 0.5,
+                    id: 'about-enter',
+                    trigger: sectionRef.current,
+                    start: 'top 65%',
+                    end: 'center center',
+                    scrub: 1,
                 },
             });
 
-            tl.from('.slide-up-and-fade', {
-                y: 150,
+            enterTimeline.from('.fade-in-element', {
+                y: 100,
                 opacity: 0,
-                stagger: 0.05,
+                stagger: 0.08,
+                ease: 'power2.out',
             });
         },
-        { scope: container },
+        { scope: sectionRef },
     );
 
     useGSAP(
         () => {
-            const tl = gsap.timeline({
+            const exitTimeline = gsap.timeline({
                 scrollTrigger: {
-                    id: 'about-me-out',
-                    trigger: container.current,
-                    start: 'bottom 50%',
-                    end: 'bottom 10%',
-                    scrub: 0.5,
+                    id: 'about-exit',
+                    trigger: sectionRef.current,
+                    start: 'bottom 40%',
+                    end: 'bottom top',
+                    scrub: 1,
                 },
             });
 
-            tl.to('.slide-up-and-fade', {
-                y: -150,
+            exitTimeline.to('.fade-in-element', {
+                y: -120,
                 opacity: 0,
-                stagger: 0.02,
+                stagger: 0.025,
+                ease: 'power1.in',
             });
         },
-        { scope: container },
+        { scope: sectionRef },
     );
 
     return (
-        <section className="pb-section" id="about-me">
-            <div className="container" ref={container}>
-                <h2 className="text-4xl md:text-6xl font-thin mb-20 slide-up-and-fade">
-                    I believe in a user centered design approach, ensuring that
-                    every project I work on is tailored to meet the specific
-                    needs of its users.
-                </h2>
+        <section className="py-32 md:py-40" id="about-me">
+            <div className="container" ref={sectionRef}>
+                <div className="max-w-6xl mx-auto space-y-20">
+                    {/* Philosophy Statement */}
+                    <div className="fade-in-element">
+                        <h2 className="text-3xl sm:text-5xl lg:text-6xl font-light leading-tight max-w-5xl">
+                            Every project I craft is built with
+                            intention—combining user-centered design with
+                            technical excellence to create digital experiences
+                            that truly resonate.
+                        </h2>
+                    </div>
 
-                <p className="pb-3 border-b text-muted-foreground slide-up-and-fade">
-                    This is me.
-                </p>
-
-                <div className="grid md:grid-cols-12 mt-9">
-                    <div className="md:col-span-5">
-                        <p className="text-5xl slide-up-and-fade">
-                            Hi, I&apos;m Tajmirul.
+                    {/* Divider */}
+                    <div className="fade-in-element">
+                        <div className="h-px bg-border w-full" />
+                        <p className="text-sm uppercase tracking-widest text-muted-foreground mt-4">
+                            About Me
                         </p>
                     </div>
-                    <div className="md:col-span-7">
-                        <div className="text-lg text-muted-foreground max-w-[450px]">
-                            <p className="slide-up-and-fade">
-                                I&apos;m a frontend web developer dedicated to
-                                turning ideas into creative solutions. I
-                                specialize in creating seamless and intuitive
-                                user experiences.
+
+                    {/* Main Content Grid */}
+                    <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-start">
+                        {/* Left Column - Name */}
+                        <div className="fade-in-element">
+                            <h3 className="text-4xl sm:text-5xl lg:text-6xl font-anton leading-tight">
+                                HI, I&apos;M
+                                <span className="block text-primary mt-2">
+                                    AKSHIT CHADGAL
+                                </span>
+                            </h3>
+                        </div>
+
+                        {/* Right Column - Description */}
+                        <div className="space-y-6">
+                            <p className="fade-in-element text-base sm:text-lg text-muted-foreground leading-relaxed">
+                                A Computer Science student passionate about
+                                full-stack development, specializing in the MERN
+                                stack. I thrive on transforming concepts into
+                                polished, functional web applications through
+                                thoughtful code and creative problem-solving.
                             </p>
-                            <p className="mt-3 slide-up-and-fade">
-                                My approach focuses on creating scalable,
-                                high-performing solutions tailored to both user
-                                needs and business objectives. By prioritizing
-                                performance, accessibility, and responsiveness,
-                                I strive to deliver experiences that not only
-                                engage users but also drive tangible results.
+
+                            <p className="fade-in-element text-base sm:text-lg text-muted-foreground leading-relaxed">
+                                I believe in building applications that scale
+                                gracefully and perform flawlessly. My focus is
+                                on crafting accessible, responsive interfaces
+                                that not only look great but deliver measurable
+                                value to users and businesses alike.
                             </p>
                         </div>
                     </div>

@@ -22,7 +22,7 @@ const Footer = async () => {
     return (
         <footer className="text-center pb-5" id="contact">
             <div className="container">
-                <p className="text-lg">Have a project in mind?</p>
+                {/* <p className="text-lg">Have a project in mind?</p> */}
                 <a
                     href={`mailto:${GENERAL_INFO.email}`}
                     className="text-3xl sm:text-4xl font-anton inline-block mt-5 mb-10 hover:underline"
@@ -30,13 +30,12 @@ const Footer = async () => {
                     {GENERAL_INFO.email}
                 </a>
 
-                <div className="">
+                {/* <div className="">
                     <a
                         href="https://github.com/Tajmirul/portfolio-2.0"
                         target="_blank"
                         className="leading-none text-muted-foreground hover:underline hover:text-white"
                     >
-                        Design & built by Tajmirul Islam
                         <div className="flex items-center justify-center gap-5 pt-1">
                             <span className="flex items-center gap-2">
                                 <Star size={18} /> {stargazers_count}
@@ -45,10 +44,10 @@ const Footer = async () => {
                                 <GitFork size={18} /> {forks_count}
                             </span>
                         </div>
-                    </a>
+                    </a> 
 
                     {/* Note: If you are not Tajmirul, use this copyright message instead */}
-                    {/* <a href='https://www.me.toinfinite.dev/' className="leading-none text-muted-foreground hover:underline hover:text-white">
+                {/* <a href='https://www.me.toinfinite.dev/' className="leading-none text-muted-foreground hover:underline hover:text-white">
                         Design & built by Tajmirul Islam <br />
                         Revised by YOUR NAME
 
@@ -60,8 +59,8 @@ const Footer = async () => {
                                 <GitFork size={14} /> {forks_count}
                             </span>
                         </div>
-                    </a> */}
-                </div>
+                    </a> 
+                </div> */}
             </div>
         </footer>
     );
