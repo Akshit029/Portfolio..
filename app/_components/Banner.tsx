@@ -74,17 +74,17 @@ const Banner = () => {
                             </div>
 
                             <p className="animate-text text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">
-                                I&apos;m{' '}
+                                I&#39;m{' '}
                                 <span className="font-bold text-foreground">
                                     Akshit Chadgal
                                 </span>
                                 , a Computer Science student with a strong focus
-                                on the MERN stack. I'm passionate about building
+                                on the MERN stack. I&#39;m passionate about building
                                 modern, scalable web applications and love
                                 turning ideas into smooth, user-friendly digital
                                 experiences through hands-on projects and
                                 continuous learning.Through personal projects
-                                and freelance work, I've gained real-world
+                                and freelance work, I&#39;ve gained real-world
                                 experience in building full-stack applications.
                             </p>
 
